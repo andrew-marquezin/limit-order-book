@@ -1,14 +1,10 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Primitives;
 
 namespace Domain.Entities;
 
-[Table("accounts")]
-public class Account : Entity
+public class Account(Guid id, string username, decimal balanceBrl, decimal balanceBtc) : Entity(id)
 {
-    [Column("balance_brl")]
-    public decimal BalanceBrl { get; set; }
-    
-    [Column("balance_btc")]
-    public decimal BalanceBtc { get; set; }
+    public string Username { get; private set; } = username;
+    public decimal BalanceBrl { get; private set; } = balanceBrl;
+    public decimal BalanceBtc { get; private set; } = balanceBtc;
 }
